@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Estates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Estates</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Value (RM)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate over the estates passed to the model -->
+            <tr th:each="estate : ${estates}">
+                <td th:text="${estate.id}"></td>
+                <td th:text="${estate.name}"></td>
+                <td th:text="${estate.value}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total-row">
+                <td colspan="2">Total Value:</td>
+                <td th:text="${totalValue}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a th:href="@{/user/estate/add}">Add New Estate</a>
+</body>
+</html>

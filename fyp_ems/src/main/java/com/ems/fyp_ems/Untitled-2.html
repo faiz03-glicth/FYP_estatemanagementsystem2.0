@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link th:href="@{/css/style.css}" rel="stylesheet"> -->
+    <title>Lihat Info Heirs</title>
+</head>
+<body>
+    <h2>Maklumat Waris</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>IC</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="heir : ${heirDetailsList}">
+                    <td th:text="${heir.isteriDetail != null ? heir.isteriDetail.name : ''}">-</td>
+                    <td th:text="${heir.isteriDetail != null ? heir.isteriDetail.ic : ''}">-</td>
+                    <span th:text="${heir.isteriDetail != null ? heir.isteriDetail.id : 'No ID'}">Fallback</span>
+                    <td>
+                        <form th:action="@{'/user/heirs/delete/' + ${heir.isteriDetail.id}}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr th:each="anakLelaki : ${heir.anakLelakiDetail}">
+                    <td th:text="${anakLelaki.name}">-</td>
+                    <td th:text="${anakLelaki.ic}">-</td>
+                    <span th:text="${heir.anakLelaki != null ? heir.anakLelaki.id : 'No ID'}">Fallback</span>
+                    <td>
+                        <form th:action="@{'/user/heirs/delete/' + ${heir.anakLelakiDetail.id}}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr th:each="anakPerempuan : ${heir.anakPerempuanDetail}">
+                    <td th:text="${anakPerempuan.name}">-</td>
+                    <td th:text="${anakPerempuan.ic}">-</td>
+                    <span th:text="${heir.anakPerempuan != null ? heir.anakPerempuan.id : 'No ID'}">Fallback</span>
+                    <td>
+                        <form th:action="@{'/user/heirs/delete/' + ${heir.anakPerempuan.id}}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+                    <td colspan="3">
+                    <a href="/user/heirs/add">Isi Maklumat Waris</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</body>
+</html>

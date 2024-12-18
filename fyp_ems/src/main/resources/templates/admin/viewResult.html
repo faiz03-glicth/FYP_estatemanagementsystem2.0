@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Faraid Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #0288d1;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .total {
+            font-weight: bold;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Faraid Results</h1>
+
+    <!-- First Table: Shares Breakdown -->
+    <table>
+        <thead>
+            <tr>
+                <th>Waris</th>
+                <th>Bahagian</th>
+                <th>Share (in Parts)</th>
+                <th>Total Parts</th>
+                <th>Final Parts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="result : ${faraidResult}">
+                <td th:text="${result['Heir']}"></td>
+                <td th:text="${result['ShareFormula']}"></td>
+                <td th:text="${result['Part']}"></td>
+                <td th:text="${result['TotalParts']}"></td>
+                <td th:text="${result['FinalParts']}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Second Table: Monetary Distribution -->
+    <table>
+        <thead>
+            <tr>
+                <th>Waris</th>
+                <th>Bahagian</th>
+                <th>Jumlah (RM)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="result : ${faraidResult}">
+                <td th:text="${result['Heir']}"></td>
+                <td th:text="${result['ShareFormula']}"></td>
+                <td th:text="${result['Amount']}"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="total">
+                <td colspan="2">Jumlah Keseluruhan</td>
+                <td th:text="${totalAmount}"></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <a th:href="@{/admin/calc}">Kembali ke Halaman Sebelumnya</a>
+</body>
+</html>

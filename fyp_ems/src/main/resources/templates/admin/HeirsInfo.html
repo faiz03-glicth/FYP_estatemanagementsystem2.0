@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heirs Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Heirs Information</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Status</th>
+                <th>Bilangan</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr th:each="heir : ${heirs}">
+                <td th:text="${heir.id}"></td>
+                <td th:text="${heir.name}"></td>
+                <td th:text="${heir.status}"></td>
+                <td th:text="${heir.quantity}"></td>
+                <td>
+                    <a th:href="@{/user/heirs/edit/{id}(id=${heir.id})}">Edit</a> <!--Specific page heirs-->
+                    <a th:href="@{/user/heirs/delete/{id}(id=${heir.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

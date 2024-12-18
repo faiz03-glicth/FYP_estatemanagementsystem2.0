@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Info Waris</title>
+</head>
+<body>
+    <h2>Update Info Waris</h2>
+    <form th:action="@{/user/heirs/add}" method="post" th:object="${wasiatDto}">
+          <!-- Anak Lelaki Section -->
+        <h3>Anak Lelaki</h3>
+        <div th:each="anakLelaki: ${wasiatDto.anakLelakiDetail}">
+            <label for="anakLelakiName">Nama Anak Lelaki:</label>
+            <input type="text" th:id="*{anakLelaki.name}" th:field="*{anakLelaki.name}" required />
+
+            <label for="anakLelakiIC">IC Anak Lelaki:</label>
+            <input type="text" th:id="*{anakLelaki.ic}" th:field="*{anakLelaki.ic}" required />
+        </div>
+
+         <!-- Anak Perempuan Section -->
+        <h3>Anak Perempuan</h3>
+        <div th:each="anakPerempuan : ${wasiatDto.anakPerempuanDetail}">
+            <label for="anakPerempuanName">Nama Anak Perempuan:</label>
+            <input type="text" th:id="*{anakPerempuan.name}" th:field="*{anakPerempuan.name}" required />
+
+            <label for="anakPerempuanIC">IC Anak Perempuan:</label>
+            <input type="text" th:id="*{anakPerempuan.ic}" th:field="*{anakPerempuan.ic}" required />
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Info Waris</button>
+    </form>
+</body>
+</html>
+<!-- <form th:action="@{/user/heirs/add}" method="post" th:object="${ibuDetail}">
+         Anak Lelaki 
+         <h3>Anak Lelaki</h3>
+         <label for="Nama">Nama Ibu:</label>
+         <input type="text" id="name" name="name" th:field="*{name}" required />
+
+         <label for="IC">IC Ibu:</label>
+         <input type="text" id="ic" name="ic" th:field="*{ic}" required />
+
+    <<form th:object="${anakPerempuanDetail}"></form>
+        Anak Perempuan
+        <label for="Nama">Nama Ayah:</label>
+         <input type="text" id="name" name="name" th:field="*{name}" required />
+
+         <label for="IC">IC Ayah:</label>
+         <input type="text" id="ic" name="ic" th:field="*{ic}" required />
+        
+        <button type="submit" class="btn btn-primary">Update Info Waris</button>
+    </form>-->

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Calculate Faraid</title>
+</head>
+<body>
+    <h1>Maklumat </h1>
+    <p>Jumlah Harta Waris:RM <span th:text="${totalEstate}"></span></p>
+    <ul>
+        <li th:each="heir : ${heirs}" th:text="${heir.name}"></li>
+    </ul>
+
+    <form th:action="@{/admin/viewcalc}" method="post">
+        <button type="submit">Kira Faraid</button>
+    </form>
+
+</body>
+</html>

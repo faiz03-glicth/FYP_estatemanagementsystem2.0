@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Estate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn-submit {
+            text-align: center;
+        }
+        .btn-submit button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Estate</h1>
+        <form action="/user/estate/add" method="post">
+            <div class="form-group">
+                <label for="name">Estate Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter estate name (e.g., CAR, HOUSE)" required>
+            </div>
+            <div class="form-group">
+                <label for="value">Estate Value (RM):</label>
+                <input type="number" id="value" name="value" placeholder="Enter estate value (e.g., 200000)" required>
+            </div>
+            <div class="btn-submit">
+                <button type="submit">Add Estate</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        © EMS Project
+    </footer>
+</body>
+</html>
